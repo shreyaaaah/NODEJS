@@ -5,14 +5,16 @@ const app = express();
 app.use(express.json());
 
 const auth = (req, res, next) => {
-    if (req.body.token === 1234) {
+    const token = req.headers.authorization;
+
+    if (token === "1234" || token === "Bearer 1234") {
         next();
     } else {
         res.send("Access Denied");
     }
 };
 
-app.post("/", auth, (req, res) => {
+app.get("/", auth, (req, res) => {
     res.send("Welcome");
 });
 
