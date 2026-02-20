@@ -5,6 +5,7 @@ const logger = (req,res,next) => {
     req.message = " This is logger function"
     //console.log(req.url)
     next()
+    
 };
 //app.use(logger);
 app.get("/home",logger,(req,res)=>{
